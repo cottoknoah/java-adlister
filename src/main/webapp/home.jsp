@@ -5,27 +5,52 @@
   Time: 1:58 PM
   To change this template use File | Settings | File Templates.
 --%>
+
+<%--Mini Exercise 1--%>
+<%--- Create a file named home.jsp--%>
+<%--- Create an instance variable that stores your 'firstname', and another that stores your 'lastname'--%>
+<%--- In the body of the document, create an h1 greeting that says "Hello, <firstname> <lastname>"--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%! String user = "Knoah"; %>
-<%! int myNumber = 1; %>
-<%
+<%! String firstName = "Knoah";%>
+<%! String lastName = "Cotto";%>
+<%--<%! int myNumber = 1; %>--%>
 
-    if(myNumber == 1){
-
-    } else {
-
-    }
-
-
-%>
+<%--<%--%>
+<%--    if(firstName.equals("Knoah")){--%>
+<%--        response.sendRedirect("index.jsp");--%>
+<%--    }--%>
+<%--%>--%>
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Home Page</title>
 </head>
 <body>
+    <h1>Welcome!</h1>
+<%--    Navbar Below    --%>
+    <%@ include file="partials/navbar.jsp"%>
+    <h1>Hello, <%= firstName + " " + lastName %></h1>
 
-    <h1>Hello, <%= user %></h1>
+    <h3>What would you like to do?</h3>
+
+    <h3>View Your Profile</h3>
+    <form action="user-profile.jsp" method="get">
+        <input type="hidden" id="username" name="username" value="Knoah">
+        <button type="submit">Go Here</button>
+    </form>
+
+    <h3>Add a To Do</h3>
+
+    <form action="todo.jsp" method="post">
+        <input type="text" id="item" name="item">
+        <button type="submit">Add to List</button>
+    </form>
+
+    <%@ include file="partials/aboutme.jsp"%>
+
+<%--    Footer Below    --%>
+    <%@ include file="partials/footer.jsp"%>
 
 </body>
 </html>
