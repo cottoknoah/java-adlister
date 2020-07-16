@@ -6,10 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%--Mini Exercise 1--%>
-<%--- Create a file named home.jsp--%>
-<%--- Create an instance variable that stores your 'firstname', and another that stores your 'lastname'--%>
-<%--- In the body of the document, create an h1 greeting that says "Hello, <firstname> <lastname>"--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%! String firstName = "Knoah";%>
@@ -35,7 +31,7 @@
     <h3>What would you like to do?</h3>
 
     <h3>View Your Profile</h3>
-    <form action="user-profile.jsp" method="get">
+    <form action="profile.jsp" method="get">
         <input type="hidden" id="username" name="username" value="Knoah">
         <button type="submit">Go Here</button>
     </form>
