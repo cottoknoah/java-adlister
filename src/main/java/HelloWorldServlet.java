@@ -16,6 +16,8 @@ public class HelloWorldServlet extends HttpServlet {
         hitCount = 0;
     }
 
+//    added a counter to this
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
             response.setContentType("text/html");
 
