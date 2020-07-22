@@ -19,8 +19,8 @@ public class MySQLAdsDao implements Ads {
                     config.getUSer(),
                     config.getPassword()
             );
-        }catch (SQLException throwables) {
-            throwables.printStackTrace();
+        }catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -40,8 +40,8 @@ public class MySQLAdsDao implements Ads {
                     ));
                 }
             }
-        } catch (SQLException throwables){
-            throwables.printStackTrace();
+        } catch (SQLException e){
+            e.printStackTrace();
 
         }
         return ads;
@@ -56,8 +56,8 @@ public class MySQLAdsDao implements Ads {
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
             lastInsertedId = rs.getLong(1);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return lastInsertedId;
     }

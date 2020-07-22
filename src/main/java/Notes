@@ -4,7 +4,11 @@ NOTE TO SELF:
     -CREATE USER 'billy'@'localhost' IDENTIFIED BY 'billysSecretP@ass123';
 
     -GRANT SELECT, INSERT, UPDATE, DELETE ON sally_db.sallys_table TO 'sally'@'localhost';
+
+
+
     -GRANT CREATE, ALTER, INSERT, DROP ON adlister_db.* TO 'someuser'@'localhost';
+
 
 -when i submit a new ad, there's a 500 error
 

@@ -13,8 +13,9 @@ public class DaoFactory {
 //    }
 
     public static Ads getAdsDao() {
+        Config config = new Config();
         if (adsDao == null) {
-            adsDao = new MySQLAdsDao(new Config());
+            adsDao = new MySQLAdsDao(config);
         }
         return adsDao;
     }

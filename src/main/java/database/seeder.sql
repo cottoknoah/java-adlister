@@ -1,7 +1,6 @@
 USE adlister_db;
 
 TRUNCATE users;
-# here to do both?
 TRUNCATE ads;
 
 INSERT INTO users (id, username, email, password) VALUES (1, 'UsernameOne', 'username1@yahoo.com', 'strongerpassword');
