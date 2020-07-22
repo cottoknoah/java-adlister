@@ -12,7 +12,7 @@ public class Ad {
         this.title = title;
         this.description = description;
     }
-
+//method overloading in case there's no id
     public Ad(long userId, String title, String description) {
         this.userId = userId;
         this.title = title;
