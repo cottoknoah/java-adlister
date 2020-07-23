@@ -25,19 +25,23 @@ public class LoginServlet extends HttpServlet {
 //        should i input an email as an option?
 
         // TODO: find a record in your database that matches the submitted password
+        request.getParameter(password);
 
         // TODO: make sure we find a user with that username
+        request.getRequestDispatcher(username);
 
         // TODO: check the submitted password against what you have in your database
+
         boolean validAttempt = false;
 
-        if (validAttempt) {
-            User user = new User (1,
-            // TODO: store the logged in user object in the session, instead of just the username
-            request.getSession().setAttribute("user", username);
-            response.sendRedirect("/profile");
-            )} else {
-            response.sendRedirect("/login");
-        }
+//        if (validAttempt) {
+//            User user = new User
+//                    (1,
+//            // TODO: store the logged in user object in the session, instead of just the username
+//            request.getSession().getAttribute("username");
+//            response.sendRedirect("/profile");
+//            } else {
+//            response.sendRedirect("/login");
+//        }
     }
 }

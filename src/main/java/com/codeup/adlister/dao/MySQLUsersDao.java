@@ -8,7 +8,6 @@ public class MySQLUsersDao implements Users{
 
     private Connection connection;
 
-
     public MySQLUsersDao(Config config){
         try {
             DriverManager.registerDriver(new Driver());
@@ -23,43 +22,60 @@ public class MySQLUsersDao implements Users{
     }
 
 
+    @Override
+    public Long insert(User user) {
+        String query = "INSERT INTO users(username, email, password) VALUES (?,?,?)";
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, user.getPassword());
+
+            stmt.executeUpdate();
+
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            return rs.getLong(1);
+        } catch (SQLException e){
+            throw new RuntimeException("Error creating new user.", e);
+        }
+//        return createUserFromResults(rs); ?
+    }
+
+//    private String createInsertQuery(User user) {
+//        return "INSERT INTO users(id, username, email, password) VALUES "
+//                + "(" + user.getId() + ","
+//                + "(" + user.getUsername() + ", "
+//                + "'" + user.getEmail() +"', "
+//                + "'" + user.getPassword() + "')";
+//    }
 
     @Override
     public User findByUsername(String username) {
         try {
-            //confused on how to do a prepared statment?
-            String sql = "SELECT * FROM username WHERE name LIKE ?";
-            String searchTermWithWildcards = "%" + username + "%";
+
+            //confused on how to do a prepared statement?
+            String sql = "SELECT * FROM users WHERE username = ?";
 
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, searchTermWithWildcards);
+            stmt.setString(1, username);
 
-            ResultSet rs = stmt.executeQuery(sql);
+            ResultSet rs = stmt.executeQuery();
             rs.next();
-            // do something with the search results
+            User user = new User(
+                    rs.getLong("id"),
+                    rs.getString("username"),
+                    rs.getString("email"),
+                    rs.getString("password")
 
+            );
+            return user;
 
         } catch (SQLException e){
             throw new RuntimeException("Error finding user.", e);
         }
-//        return User; ????
-    }
-
-
-
-    @Override
-    public Long insert(User user) {
-        try {
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate(createInsertQuery(user), Statement.RETURN_GENERATED_KEYS);
-            //why is this red? ^
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-            return rs.getLong(1); //which index do I return?
-        } catch (SQLException e){
-            throw new RuntimeException("Error creating new user.", e);
-        }
-//        return createUserFromResults(rs); ???
     }
 
 
