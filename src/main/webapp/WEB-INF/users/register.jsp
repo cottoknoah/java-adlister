@@ -19,11 +19,15 @@
         <h1>Register Here!</h1>
         <form action="/login" method="POST">
             <div class="form-group">
-                <label for="username">Register new Username:</label>
+                <label for="username">Username:</label>
                 <input id="username" name="username" class="form-control" type="text">
             </div>
             <div class="form-group">
-                <label for="password">Insert Password Below:</label>
+                <label for="email">Email:</label>
+                <input id="email" name="email" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
                 <input id="password" name="password" class="form-control" type="password">
             </div>
             <input type="submit" class="btn btn-primary btn-block" value="Click to Register">
